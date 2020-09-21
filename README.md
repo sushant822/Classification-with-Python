@@ -53,3 +53,8 @@ Let's use one hot encoding technique to convert categorical varables to binary v
     Feature = pd.concat([Feature,pd.get_dummies(df['education'])], axis=1)
     Feature.drop(['Master or Above'], axis = 1,inplace=True)
 
+Now let's defind feature sets X, give it lables and normalize it so that we can apply various classification methods.
+
+After applying the classification methods, here is a summary of the results:
+
+![06_result](images/06_result.png)
