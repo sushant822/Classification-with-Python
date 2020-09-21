@@ -28,3 +28,28 @@ Let's see now what the loan status is of our dataset:
     df['loan_status'].value_counts()
 
 260 people have paid off the loan on time while 86 have gone into collection.
+
+Let's plot some columns to underestand data better:
+
+![03_principal](images/03_principal.png)
+
+![04_age](images/04_age.png)
+
+![05_day_of_week](images/05_day_of_week.png)
+
+We see that people who get the loan at the end of the week dont pay it off, so lets use Feature binarization to set a threshold values less then day 4.
+
+    df['weekend'] = df['dayofweek'].apply(lambda x: 1 if (x>3)  else 0)
+
+Now, let's convert Categorical features to numerical values and look at gender distrubition:
+
+    df.groupby(['Gender'])['loan_status'].value_counts(normalize=True)
+
+86 % of female pay there loans while only 73 % of males pay there loan
+
+Let's use one hot encoding technique to convert categorical varables to binary variables and append them to the feature Data Frame.
+
+    Feature = df[['Principal','terms','age','Gender','weekend']]
+    Feature = pd.concat([Feature,pd.get_dummies(df['education'])], axis=1)
+    Feature.drop(['Master or Above'], axis = 1,inplace=True)
+
