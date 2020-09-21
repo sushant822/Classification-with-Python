@@ -22,3 +22,9 @@ As we can see, date and time needs to be an object for us to do analysis. We can
 This is what it looks like now:
 
 ![02_date_after](images/02_date_after.png)
+
+Let's see now what the loan status is of our dataset:
+
+    df['loan_status'].value_counts()
+
+260 people have paid off the loan on time while 86 have gone into collection.
